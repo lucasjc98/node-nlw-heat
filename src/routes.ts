@@ -4,6 +4,7 @@ import { CreateMessageController } from "./controllers/CreateMessageController";
 import { Get3LastMessagesController } from "./controllers/Get3LastMessagesController";
 import { ProfileUserController } from "./controllers/ProfileUserController";
 import { ensureAuthenticated } from "./middleware/ensureAuthenticated";
+import { UpdateUserNameController } from "./controllers/UpdateUserNameController";
 
 const router = Router();
 
@@ -18,5 +19,7 @@ router.post(
 router.get("/messages/last3", new Get3LastMessagesController().handle);
 
 router.get("/profile", ensureAuthenticated, new ProfileUserController().handle);
+
+router.put("/profile/edit", ensureAuthenticated, new UpdateUserNameController().handle);
 
 export { router };
